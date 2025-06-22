@@ -1,31 +1,43 @@
 import pandas as pd
 import numpy as np
+import sys
+from PySide6.QtWidgets import QApplication, QLabel
 
 def importAndClean(fileName):
     cleaned = pd.read_excel(fileName, header=6)
     print(cleaned.head())   
     #get Date, Amount, Description, and "In Spreadsheet" columns
 
-    headers = ["Date", "Amount", "Description", "In Spreadsheet"]
+    # Prompt for option to include "Category"?
+    headers = ["Date", "Amount", "Description", "In Spreadsheet", "Category"]
     workingData = pd.DataFrame({})
     for header in headers:
         extractedCol = cleaned[header]
-        workingData[header] = extractedCol #pd.concat([extractedCol, workingData])
-    print(workingData.head())
+        workingData[header] = extractedCol
     return workingData
       
 def categorize(workingData):
-    # filler function until UI for categorizing is made
-    if "Category" in workingData:
-        return workingData
-    #doesn't exist, fill with NaN
-    workingData["Category"] = np.nan
-    return workingData
+    # no vals, make them
+    if "Category" not in workingData:
+        workingData["Category"] = np.nan
+        # add category entry here
+    
+    #sum by category
+    sumEachCategory = workingData.groupby("Category")["Amount"].sum()
+    print(sumEachCategory)
+
+
+# def uiTest():
+#     app = QApplication(sys.argv)
+#     label = QLabel("Hello World!")
+#     label.show()
+#     app.exec()
 
 def main():
     workingData = importAndClean("C:\\Users\\sophi\\Downloads\\activity.xlsx")
+    print(workingData)
     categorize(workingData)
-    print(workingData.head())
+    # uiTest()
 
-# Anything below here is considered "main"
-main()
+if __name__=="__main__":
+    main()
