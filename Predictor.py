@@ -43,20 +43,8 @@ def ConvertToValues(workingData):
     df['Amount'] = pd.cut(df['Amount'], bins=thresholds, labels=AmountClassifiers[:-1], right=False)
     df['Category'] = pd.Categorical(df['Category'], categories=CategoryClassifiers[:-1])
     df['Description'] = pd.Categorical(df['Description'], categories=DescriptionClassifiers[:-1])
-    
-    print(df.head())
     return df
     
-def visualize(workingData):
-    
-    # visualize data here
-    plt.scatter(workingData["Amount"], workingData["Description"])
-    plt.xlabel("Amount")
-    plt.ylabel("Description")
-    plt.title("Amount vs Description")
-    plt.show()
-    # each point can be used to predict category, as estimated by the amount vs the description. 
-
 def predict(args=None, filePath=None):
     # predict category based on amount and description
     # print("This is the predictor file. It will be used to categorize expenses based on location and amount spent.")
@@ -71,9 +59,7 @@ def predict(args=None, filePath=None):
             raise ValueError("File path is required. Please provide a valid file path using the --filepath argument.")
         fileName = args.filepath
         workingData = importAndClean(fileName)
-        processedData = ConvertToValues(workingData)
-        visualize(processedData)
-        return processedData
+        return workingData
     except Exception as e:
         print(f"An error occurred: {e}")
    

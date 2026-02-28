@@ -23,6 +23,6 @@
             "program": "${workspaceFolder}\\Predictor.py",
             "console": "integratedTerminal",
             "guiEventLoop": "qt6"
-        }
+        },
     ]
 }

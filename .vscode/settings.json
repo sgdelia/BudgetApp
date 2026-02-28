@@ -1,4 +1,17 @@
 {
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}"
+    ],
+    "python.analysis.typeCheckingMode": "off",
+    "python.languageServer": "Pylance",
+    "jupyter.notebookFileRoot": "${workspaceFolder}",
+    "jupyter.kernels.excludePythonEnvironments": [
+        "~/miniconda3/envs/tf/scripts/python.exe",
+        "~/miniconda3/envs/ds"
+    ],
     "python-envs.defaultEnvManager": "ms-python.python:venv",
-    "python.analysis.autoImportCompletions": true
+    "python-envs.venvPath": "${workspaceFolder}/.venv",
+    "jupyter-notebook.enablePlotViewer": true,
+    "jupyter.plotViewerDefaultPlotType": "matplotlib",
+    "jupyter.jupyterInterruptTimeout": 5000,
 }
