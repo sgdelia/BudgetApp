@@ -22,7 +22,7 @@
             "request": "launch",
             "program": "${workspaceFolder}\\Predictor.py",
             "console": "integratedTerminal",
-            "guiEventLoop": "matplotlib"
+            "guiEventLoop": "qt6"
         }
     ]
 }
