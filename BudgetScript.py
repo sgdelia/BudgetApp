@@ -46,11 +46,6 @@ def excelFormatting(workingData):
     
 
 
-# def uiTest():
-#     app = QApplication(sys.argv)
-#     label = QLabel("Hello World!")
-#     label.show()
-#     app.exec()
 
 def main():
     filepath = input("Enter the path to the budget file: ")
