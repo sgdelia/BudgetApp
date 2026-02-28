@@ -5,11 +5,24 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python Debugger: Python File",
+            "name": "Python Debugger: Predictor With Arguments",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
-            "args": ["--filepath","C:\\Users\\sophi\\Downloads\\activity (4).xlsx"],
+            "program": "${workspaceFolder}\\Predictor.py",
+            "console": "integratedTerminal",
+             "args": [
+                "--filepath",
+                "C:\\Users\\sophi\\Downloads\\activity (4).xlsx"
+            ],
+            "guiEventLoop": "qt6"
+        },
+        {
+            "name": "Python Debugger: Predictor Without Arguments",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\Predictor.py",
+            "console": "integratedTerminal",
+            "guiEventLoop": "matplotlib"
         }
     ]
 }
