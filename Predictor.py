@@ -29,7 +29,7 @@ def ConvertToValues(workingData):
     # convert date to values
     df = workingData.copy()
     AmountClassifiers = pd.Series(["Very Low", "Low", "Medium", "High", "Very High", None])
-    thresholds = pd.Series([0, 20, 50, 100, 500, np.inf])
+    thresholds = pd.Series([0, 20, 50, 100, 500, int(10**6)])
    
     # convert categories to values
     CategoryClassifiers = df['Category'].unique()
@@ -43,7 +43,7 @@ def ConvertToValues(workingData):
     df['Amount'] = pd.cut(df['Amount'], bins=thresholds, labels=AmountClassifiers[:-1], right=False)
     df['Category'] = pd.Categorical(df['Category'], categories=CategoryClassifiers[:-1])
     df['Description'] = pd.Categorical(df['Description'], categories=DescriptionClassifiers[:-1])
-    return df
+    return df, thresholds, AmountClassifiers, CategoryClassifiers, DescriptionClassifiers
     
 def predict(args=None, filePath=None):
     # predict category based on amount and description
