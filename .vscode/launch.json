@@ -27,8 +27,7 @@
             "console": "integratedTerminal",
             "args": [
                 "--filepath",
-                "C:\\Users\\sophi\\Downloads\\activity (4).xlsx"
-            ],
+                "C:\\Users\\sophi\\OneDrive\\Documents\\BigAssBudgetData.xlsx"            ],
             "guiEventLoop": "qt6"
         },
         {
