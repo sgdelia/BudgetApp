@@ -7,7 +7,7 @@ from pathlib import Path
 def importAndClean(fileName):
     properFormat = fileName.replace('"','').replace('"', '')
     properFormat = Path(properFormat)
-    cleaned = pd.read_excel(properFormat, sheet_name="Cleaned Data", header=0)
+    cleaned = pd.read_excel(properFormat, sheet_name=0, header=0)
     print(cleaned.head())   
     #get Date, Amount, Description, and "In Spreadsheet" columns
 
@@ -46,11 +46,6 @@ def excelFormatting(workingData):
     
 
 
-# def uiTest():
-#     app = QApplication(sys.argv)
-#     label = QLabel("Hello World!")
-#     label.show()
-#     app.exec()
 
 def main():
     filepath = input("Enter the path to the budget file: ")
