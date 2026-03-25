@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Amex Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\BudgetScript.py",
+            "console": "integratedTerminal",
+            "args": ["-p", "C:\\Users\\sophi\\Downloads\\activity.xlsx", "-t", "amex"], 
+        },
+        {
             "name": "Python Debugger: Remote Attach",
             "type": "debugpy",
             "request": "attach",
@@ -27,7 +35,8 @@
             "console": "integratedTerminal",
             "args": [
                 "--filepath",
-                "C:\\Users\\sophi\\OneDrive\\Documents\\BigAssBudgetData.xlsx"            ],
+                "C:\\Users\\sophi\\OneDrive\\Documents\\BigAssBudgetData.xlsx"
+            ],
             "guiEventLoop": "qt6"
         },
         {
