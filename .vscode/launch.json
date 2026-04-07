@@ -26,6 +26,19 @@
             ],
         },
         {
+            "name": "Bank Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\BudgetScript.py",
+            "console": "integratedTerminal",
+            "args": [
+                "-p",
+                "C:\\Users\\sophi\\Downloads\\transactions.csv",
+                "-t",
+                "bank"
+            ],
+        },
+        {
             "name": "Python Debugger: Predictor With Arguments",
             "type": "debugpy",
             "request": "launch",

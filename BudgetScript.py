@@ -16,8 +16,8 @@ def importAndClean(fileName, typeOfStatment: str = 'other'):
         colsToDrop = ['Bank RTN', 'Account Number', 'Transaction Type', 'Check Number',]
         cleaned = cleaned.drop(colsToDrop, axis=1)
         CredsAndDebs = cleaned['Debit'].to_frame()
-        CredsAndDebs = CredsAndDebs.join(cleaned['Credit'].to_frame())
-        Total = CredsAndDebs['Debit'].sum() - CredsAndDebs['Credit'].sum()
+        CredsAndDebs = CredsAndDebs.join(cleaned['Credit'].mul(-1).to_frame())
+        Total = CredsAndDebs.sum(axis=1)
         cleaned.insert(1,'Amount', Total)
         try:
             index: int = cleaned.columns.names.count('Category')
