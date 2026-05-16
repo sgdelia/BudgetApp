@@ -10,7 +10,7 @@ def importAndClean(fileName, typeOfStatment: str = 'other'):
     properFormat = Path(properFormat)
 
     if typeOfStatment.upper() == 'AMEX':
-        cleaned = pd.read_excel(properFormat, sheet_name=0, header=6)
+        cleaned = pd.read_excel(properFormat, sheet_name="activity", header=0)
     elif typeOfStatment.upper() == 'BANK':
         cleaned = pd.read_csv(properFormat)
         colsToDrop = ['Bank RTN', 'Account Number', 'Transaction Type', 'Check Number',]
