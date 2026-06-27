@@ -49,6 +49,18 @@
                 "C:\\Users\\sophi\\OneDrive\\Documents\\BigAssBudgetData.xlsx"
             ],
             "guiEventLoop": "qt6"
+        },
+        {
+            "name": "WebScrape Debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}\\WebScraper.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--url",
+                "https://www.americanexpress.com/en-us/"
+            ],
+            "guiEventLoop": "qt6"
         }
     ]
 }

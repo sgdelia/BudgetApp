@@ -10,19 +10,18 @@ def importAndClean(fileName, typeOfStatment: str = 'other'):
     properFormat = Path(properFormat)
 
     if typeOfStatment.upper() == 'AMEX':
-        cleaned = pd.read_excel(properFormat, sheet_name=0, header=6)
+        cleaned = pd.read_excel(properFormat, sheet_name=0, header=0)
     elif typeOfStatment.upper() == 'BANK':
         cleaned = pd.read_csv(properFormat)
-        colsToDrop = ['Bank RTN', 'Account Number', 'Transaction Type', 'Check Number',]
+        colsToDrop = ['Bank RTN', 'Account Number', 'Transaction Type', 'Check Number','Account Running Balance']
         cleaned = cleaned.drop(colsToDrop, axis=1)
         CredsAndDebs = cleaned['Debit'].to_frame()
         CredsAndDebs = CredsAndDebs.join(cleaned['Credit'].mul(-1).to_frame())
         Total = CredsAndDebs.sum(axis=1)
         cleaned.insert(1,'Amount', Total)
-        try:
-            index: int = cleaned.columns.names.count('Category')
-        except:
-            cleaned.insert(3,column='Category', value="")
+        if 'Category' not in cleaned.columns:
+            cleaned.insert(4, 'Category', np.nan)
+            cleaned['Category'] = cleaned['Description'].astype('object')
         cleaned = cleaned.drop(['Credit', 'Debit'], axis=1)
     else:
         cleaned = pd.read_excel(properFormat, sheet_name=0, header=0)
@@ -73,7 +72,7 @@ def main():
     print(workingData)
     categorize(workingData)
     excelFormatting(workingData)
-    # uiTest()
+    # uiTest()    
 
 if __name__=="__main__":
     main()
