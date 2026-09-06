@@ -47,8 +47,15 @@ def test_excelFormatting():
     df = pd.DataFrame(data)
     
     # Call the function
-    excelFormatting(df)
+    result = excelFormatting(df)
     
     # Since the function copies to clipboard, we can't directly test the output.
     # However, we can check if the function runs without errors.
-    assert True, "Function ran without errors"
+    assert isinstance(result, pd.DataFrame)
+    assert set(result.columns) == {"Formula", "Category"}
+
+    cat1_row = result[result["Category"] == "Cat1"].iloc[0]
+    assert cat1_row["Formula"] == "=100+300"
+
+    cat2_row = result[result["Category"] == "Cat2"].iloc[0]
+    assert cat2_row["Formula"] == "=200"
