@@ -6,4 +6,4 @@ A Python project written to import and clean personal expense data from an Excel
 - -t is the type of statement export, either 'bank' or 'amex'  
 
 ## Example
-python3 BudgetScript.py --filepath <Path to Export> -t <Export Type>
+python3 BudgetScript.py --filepath"<Path to Export\> -t <Export Type\>
