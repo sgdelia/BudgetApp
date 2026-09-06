@@ -27,9 +27,8 @@ def importAndClean(fileName, typeOfStatment: str = 'other'):
         cleaned = cleaned.drop(['Credit', 'Debit'], axis=1)
     else:
         cleaned = pd.read_excel(properFormat, sheet_name=0, header=0)
-    #get Date, Amount, Description, and "In Spreadsheet" columns
+    #get Date, Amount, and Description columns
 
-    # Prompt for option to include "Category"?
     # headers = ["Date", "Amount", "Description", "In Spreadsheet", "Category"]
     headers = ["Date", "Amount", "Description", "Category"]
     workingData = pd.DataFrame({})
@@ -59,8 +58,8 @@ def excelFormatting(workingData):
         dictOfVals = dict(Formula=formula, Category=group[0])  
         formsAndGroups.append(dictOfVals)
     framed = pd.DataFrame(formsAndGroups)
-    framed.to_clipboard(index=False, header=False)
-    print("Excel formulas copied to clipboard")
+    return framed
+    
     
 
 def main():
@@ -73,8 +72,9 @@ def main():
     workingData = importAndClean(filepath, typeOfStatement)
     print(workingData)
     categorize(workingData)
-    excelFormatting(workingData)
-    # uiTest()    
+    framed = excelFormatting(workingData)
+    framed.to_clipboard(index=False, header=False)
+    print("Excel formulas copied to clipboard")
 
 if __name__=="__main__":
     main()
