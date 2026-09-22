@@ -21,7 +21,7 @@ def importAndClean(fileName, typeOfStatment: str = 'other'):
         CredsAndDebs = CredsAndDebs.join(cleaned['Credit'].mul(-1).to_frame())
         Total = CredsAndDebs.sum(axis=1)
         cleaned.insert(1,'Amount', Total)
-        if 'Category' not in cleaned.columns:
+        if 'Category'.upper() not in cleaned.columns:
             cleaned.insert(4, 'Category', np.nan)
             cleaned['Category'] = cleaned['Description'].astype('object')
         cleaned = cleaned.drop(['Credit', 'Debit'], axis=1)
@@ -43,12 +43,13 @@ def categorize(workingData):
     if "Category" not in workingData:
         workingData["Category"] = np.nan
         # add category entry here
+    # case ignore
     #sum by category
-    sumEachCategory = workingData.groupby("Category")["Amount"].sum()
+    sumEachCategory = workingData.groupby(workingData["Category"].str.upper())["Amount"].sum()
     print(sumEachCategory)
 
 def excelFormatting(workingData):   
-    sorted = workingData.groupby("Category")
+    sorted = workingData.groupby(workingData["Category"].str.upper())
     formsAndGroups = list()
     sortedList = list(sorted)
     for group in sortedList:
