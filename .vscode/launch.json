@@ -20,7 +20,7 @@
             "console": "integratedTerminal",
             "args": [
                 "-p",
-                "C:\\Users\\sophi\\Downloads\\activity.xlsx",
+                "C:\\Users\\sgdel\\Downloads\\activity.xlsx",
                 "-t",
                 "amex"
             ],
